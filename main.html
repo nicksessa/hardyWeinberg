@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hardy-Weinberg Equation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Import Custom Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM Fell English SC">
+
+  <style>
+    body {
+      background-color: black;
+      text-align: center;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #topBox {
+      position: fixed;
+
+      top: 0px;
+
+      border-style: solid;
+      border-color: purple;
+
+      width: 100%;
+      height: 15%;
+    }
+
+    #middleBox {
+      position: absolute;
+
+      margin-top: 20px;
+
+      border-style: solid;
+      border-color: red;
+
+      top: 15%;
+
+      width: 100%;
+      height: 60%;
+    }
+
+    #bottomBox {
+      position: fixed;
+
+      border-style: solid;
+      border-color: green;
+
+      width: 100%;
+      height: 15%;
+
+      bottom: 0;
+    }
+
+    #middleLeft {
+      position: absolute;
+      width: 20%;
+      height: 100%;
+
+      left: 0;
+
+
+      padding-right: 23px;
+
+      border-style: dotted;
+      border-color: green;
+
+      overflow-y: hidden;
+    }
+
+    #middleLeft:hover {
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    #middleCenter {
+      position: absolute;
+      height: 100%;
+      width: 60%;
+      left: 20%;
+      padding-right: 10px;
+
+      border-style: dotted;
+      border-color: blue;
+
+      overflow-y: hidden;
+      
+    }
+
+    #middleCenter:hover {
+      overflow-y: auto;
+      /* padding-right: 6px; */
+
+    }
+
+    #middleRight {
+      position: absolute;
+      height: 100%;
+      width: 20%;
+      left: 80%;
+
+      border-style: dotted;
+      border-color: yellow;
+
+      overflow-y: hidden;
+    }
+
+    #middleRight:hover {
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="topBox">top box</div>
+  <div id="middleBox">
+    <div id="middleLeft">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+
+    </div>
+    <div id="middleCenter">
+
+      <div class="container">
+
+            <h1>Hardy-Weinberg Equation</h1>
+            <p>p + q = 1</p>
+            <p>p = frequency or percent of the dominant allele</p>
+            <p>q = frequency or precent of the recessive allele</p>
+
+
+        <form class="form-inline">
+          <div class="row">
+            <div class="col">
+              <label for="dominantAllele">p (Dominant) </label>
+            </div>
+            <div>
+              <input type="text" class="form-control" id="dominantAlleleID" placeholder="Enter Dominant Allele Percent"
+                name="dominantAllele">
+            </div>
+            <div class="col">
+              <label for="recessiveAllele">q (Recessive) </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" id="recessiveAlleleID"
+                placeholder="Enter Recessive Allele Percent" name="recessiveAllele">
+            </div>
+            <div class="col-sm-1">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+        <div>
+          <h2 style="margin-top:20px">
+            <span id="output1Dominant">50</span> + <span id="output1Recessive">50</span> = <span
+              id="output1Result"></span>
+          </h2>
+        </div>
+        <div>
+          <h2>p<sup>2</sup> + 2pq + q<sup>2</sup> = 1
+          </h2>
+        </div>
+        <div>
+          <h2>(<span id="o1a">50</span>)<sup>2</sup> + 2(<span id="o1b">50</span> * <span id="o1c">50</span>) + (<span
+              id="o1d">50</span>)<sup>2</sup> = 1
+          </h2>
+        </div>
+        <div>
+          <h2><span id="o2a"></span> + <span id="o2b"></span> + <span id="o2c"></span> = <span id="o2d"></span>
+          </h2>
+        </div>
+
+        <div>
+          <p> Frequency of AA = p<sup>2</sup> = <span id="o3a"></span></p>
+          <p> Frequency of Aa = 2pq = <span id="o3b"></span></p>
+          <p> Frequency of aa = q<sup>2</sup> = <span id="o3c"></span></p>
+        </div>
+        <div>
+          <p> Dominant = AA + Aa (<span id="o4a"></span> + <span id="o4b"></span>) = <span id="o4c"></span></p>
+          <p> Recessive = aa (<span id="o4d"></span>)</p>
+        </div>
+
+        <hr style="border-top: 1px dotted red">
+
+        <div>
+          <p> Genotypic frequency of aa = q<sup>2</sup> = <span id ="o5a"></span></p>
+          <p> The square root of <span id="o5b"></span> is: <span id="o5c"></span></p>
+          <p> Therefore, the frequency of the 'a' allele in the population is: <span id="o5d"></span></p>
+          <p> And the frequency of the 'A' allele in the population is: <span id="o5e"></span></p>
+        </div>
+        
+        <hr style="border-top: 1px dotted red">
+
+        <div>
+          <p> Frequency of AA = <span id="o6a"></span></p>
+          <p> Frequency of Aa = <span id="o6b"></span></p>
+          <p> Frequency of aa = <span id="o6c"></span></p>
+        </div>
+
+      </div>
+
+    </div> <!-- middle center -->
+    <div id="middleRight">Middle Right
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+
+    </div>
+  </div>
+  <div id="bottomBox">bottom box</div>
+
+  <script>
+
+
+    $(document).ready(function () {
+      $("#dominantAlleleID").change(function () {
+        //alert("Dominante Allele Num Changed!")
+
+        var dominantAlleleNum = parseInt($("#dominantAlleleID").val())
+        //var dominantAlleleNum = parseFloat($("#dominantAlleleID").val())
+
+        var recessiveAlleleNum = 100 - dominantAlleleNum
+        $("#recessiveAlleleID").val(recessiveAlleleNum)
+
+        //var recessiveAlleleNum = $("#recessiveAlleleID").val()
+        var result1 = dominantAlleleNum + recessiveAlleleNum
+
+        console.log("Dominant Allele: " + dominantAlleleNum)
+
+        dominantAlleleNum = dominantAlleleNum * .01
+        recessiveAlleleNum = recessiveAlleleNum * .01
+        result1 = result1 * .01
+
+        $("#output1Dominant").html(dominantAlleleNum)
+        $("#output1Recessive").html(recessiveAlleleNum)
+        $("#output1Result").html(result1)
+
+        $("#o1a").html(dominantAlleleNum)
+        $("#o1b").html(dominantAlleleNum)
+        $("#o1c").html(recessiveAlleleNum)
+        $("#o1d").html(recessiveAlleleNum)
+
+
+        var pSquared = dominantAlleleNum * dominantAlleleNum
+        pSquared = pSquared.toPrecision(2)
+        var pqDoubled = (dominantAlleleNum * recessiveAlleleNum) * 2
+        pqDoubled = pqDoubled.toPrecision(2)
+        var qSquared = recessiveAlleleNum * recessiveAlleleNum
+        qSquared = qSquared.toPrecision(2)
+        var result2 = parseFloat(pSquared) + parseFloat(pqDoubled) + parseFloat(qSquared)
+        //result2 = result2.toPrecision(2)
+
+        //result2 = result2 * .01
+
+        $("#o2a").html(pSquared)
+        $("#o2b").html(pqDoubled)
+        $("#o2c").html(qSquared)
+        $("#o2d").html(result2)
+
+        $("#o3a").html(pSquared)
+        $("#o3b").html(pqDoubled)
+        $("#o3c").html(qSquared)
+
+        var domPlusHetero = parseFloat(pSquared) + parseFloat(pqDoubled)
+        $("#o4a").html(pSquared)
+        $("#o4b").html(pqDoubled)
+        $("#o4c").html(domPlusHetero)
+        $("#o4d").html(qSquared)
+
+        //genotypic frequency
+        $("#o5a").html(recessiveAlleleNum)
+        $("#o5b").html(recessiveAlleleNum)
+
+        var a = Math.sqrt(parseFloat(recessiveAlleleNum))
+        a = a.toPrecision(2)
+        $("#o5c").html(a)
+        $("#o5d").html(a)
+
+        var A = 1 - a
+        A = A.toPrecision(2)
+        $("#o5e").html(A)
+
+
+        var AA = A * A
+        AA = AA.toPrecision(2)
+        var Aa = (A * a) * 2
+        Aa = Aa.toPrecision(2)
+        var aa = a * a
+        aa = aa.toPrecision(2)
+
+        $("#o6a").html(AA)
+        $("#o6b").html(Aa)
+        $("#o6c").html(aa)
+      })
+    })
+
+
+  </script>
+</body>
+
+</html>
