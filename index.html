@@ -14,227 +14,173 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM Fell English SC">
 
   <style>
-    body {
-      background-color: black;
-      text-align: center;
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    #topBox {
-      position: fixed;
-
-      top: 0px;
-
-      border-style: solid;
-      border-color: purple;
-
-      width: 100%;
-      height: 15%;
-    }
-
-    #middleBox {
-      position: absolute;
-
-      margin-top: 20px;
-
-      border-style: solid;
-      border-color: red;
-
-      top: 15%;
-
-      width: 100%;
-      height: 60%;
-    }
-
-    #bottomBox {
-      position: fixed;
-
-      border-style: solid;
-      border-color: green;
-
-      width: 100%;
-      height: 15%;
-
-      bottom: 0;
-    }
-
-    #middleLeft {
-      position: absolute;
-      width: 20%;
-      height: 100%;
-
-      left: 0;
-
-
-      padding-right: 23px;
-
-      border-style: dotted;
-      border-color: green;
-
-      overflow-y: hidden;
-    }
-
-    #middleLeft:hover {
-      overflow-y: auto;
-      padding-right: 6px;
-    }
-
-    #middleCenter {
-      position: absolute;
-      height: 100%;
-      width: 60%;
-      left: 20%;
-      padding-right: 10px;
-
-      border-style: dotted;
-      border-color: blue;
-
-      overflow-y: hidden;
-      
-    }
-
-    #middleCenter:hover {
-      overflow-y: auto;
-      /* padding-right: 6px; */
-
-    }
-
-    #middleRight {
-      position: absolute;
-      height: 100%;
-      width: 20%;
-      left: 80%;
-
-      border-style: dotted;
-      border-color: yellow;
-
-      overflow-y: hidden;
-    }
-
-    #middleRight:hover {
-      overflow-y: auto;
-      padding-right: 6px;
-    }
+   
   </style>
 </head>
 
 <body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-5">Hardy-Weinberg Equation</h2>
+                <ul class="nav nav-fill">
+                    <a class="nav-item" href="#findq">Find q</a>
+<!--                     <a class="nav-item" href="#formChangePassword">Password</a>
+                    <a class="nav-item" href="#formContact">Contact</a> -->
+                </ul>
+                <hr class="mb-5">
+                <div class="row">
 
-  <div id="topBox">top box</div>
-  <div id="middleBox">
-    <div id="middleLeft">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+                    <div class="col-md-6 offset-md-3">
+                        <span>p + q = 1</span>
+                        <div>
+                            <span>p<sup>2</sup> + 2pq + q<sup>2</sup> = 1</span>
+                        </div>
+                        <span class="anchor" id="findq"></span>
+                        <hr class="mb-5">
+    
+                        <!-- form card register -->
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Find q</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off">
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Individuals in a Population</label>
+                                        <div class="col-lg-3">
+                                            <input id="populationSize" class="form-control" type="number" value="100" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label"># of Individuals with recessive Allele</label>
+                                        <div class="col-lg-3">
+                                            <input id="recessiveAllele" class="form-control" type="number" value="20" required="">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-lg-3 offset-lg-9">
+                                            <button id="submitBtn" type="submit" class="btn btn-success btn-lg float-right">Submit</button>
+                                        </div>
+                                    </div>
 
-    </div>
-    <div id="middleCenter">
-
-      <div class="container">
-
-            <h1>Hardy-Weinberg Equation</h1>
-            <p>p + q = 1</p>
-            <p>p = frequency or percent of the dominant allele</p>
-            <p>q = frequency or precent of the recessive allele</p>
+                                    <hr>
+                                    <div class="row"><h4>Results:</h4></div>
+                                    <div id="resultsForQ"></div>
 
 
-        <form class="form-inline">
-          <div class="row">
-            <div class="col">
-              <label for="dominantAllele">p (Dominant) </label>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /form card register -->
+    
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                        <span class="anchor" id="genotypicFrequencies"></span>
+                        <hr class="mb-5">
+    
+                        <!-- form card change password -->
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Genotypic Frequencies of AA Aa aa</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off">
+                                    <div id="resultsForFrequencies"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /form card change password -->
+    
+                    </div>
+                    
+                </div>
+                <!--/row-->
+    
+            <br><br><br><br>
+    
             </div>
-            <div>
-              <input type="text" class="form-control" id="dominantAlleleID" placeholder="Enter Dominant Allele Percent"
-                name="dominantAllele">
-            </div>
-            <div class="col">
-              <label for="recessiveAllele">q (Recessive) </label>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" id="recessiveAlleleID"
-                placeholder="Enter Recessive Allele Percent" name="recessiveAllele">
-            </div>
-            <div class="col-sm-1">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-        </form>
-        <div>
-          <h2 style="margin-top:20px">
-            <span id="output1Dominant">50</span> + <span id="output1Recessive">50</span> = <span
-              id="output1Result"></span>
-          </h2>
+            <!--/col-->
         </div>
-        <div>
-          <h2>p<sup>2</sup> + 2pq + q<sup>2</sup> = 1
-          </h2>
-        </div>
-        <div>
-          <h2>(<span id="o1a">50</span>)<sup>2</sup> + 2(<span id="o1b">50</span> * <span id="o1c">50</span>) + (<span
-              id="o1d">50</span>)<sup>2</sup> = 1
-          </h2>
-        </div>
-        <div>
-          <h2><span id="o2a"></span> + <span id="o2b"></span> + <span id="o2c"></span> = <span id="o2d"></span>
-          </h2>
-        </div>
-
-        <div>
-          <p> Frequency of AA = p<sup>2</sup> = <span id="o3a"></span></p>
-          <p> Frequency of Aa = 2pq = <span id="o3b"></span></p>
-          <p> Frequency of aa = q<sup>2</sup> = <span id="o3c"></span></p>
-        </div>
-        <div>
-          <p> Dominant = AA + Aa (<span id="o4a"></span> + <span id="o4b"></span>) = <span id="o4c"></span></p>
-          <p> Recessive = aa (<span id="o4d"></span>)</p>
-        </div>
-
-        <hr style="border-top: 1px dotted red">
-
-        <div>
-          <p> Genotypic frequency of aa = q<sup>2</sup> = <span id ="o5a"></span></p>
-          <p> The square root of <span id="o5b"></span> is: <span id="o5c"></span></p>
-          <p> Therefore, the frequency of the 'a' allele in the population is: <span id="o5d"></span></p>
-          <p> And the frequency of the 'A' allele in the population is: <span id="o5e"></span></p>
-        </div>
+        <!--/row-->
+        <hr>
+        <p class="text-center">The End.<br>
+            <a class="small text-info d-inline-block" href="https://www.codeply.com/bootstrap-4-examples">More Bootstrap 4 Examples</a>
+        </p>
         
-        <hr style="border-top: 1px dotted red">
-
-        <div>
-          <p> Frequency of AA = <span id="o6a"></span></p>
-          <p> Frequency of Aa = <span id="o6b"></span></p>
-          <p> Frequency of aa = <span id="o6c"></span></p>
-        </div>
-
-      </div>
-
-    </div> <!-- middle center -->
-    <div id="middleRight">Middle Right
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
-
     </div>
-  </div>
-  <div id="bottomBox">bottom box</div>
-
+    <!--/container-->
   <script>
+
+// validation example for Login form
+ $("#btnLogin").click(function(event) {
+    
+    var form = $("#loginForm");
+    
+    if (form[0].checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    // if validation passed form
+    // would post to the server here
+    
+    form.addClass('was-validated');
+}); 
+
+
+    $("#submitBtn").click(function(event) {
+        //alert("btn clicked!")
+        var totalPop = parseInt($("#populationSize").val())
+        var numRecessive = parseInt($("#recessiveAllele").val())
+        var percentRecessive = numRecessive / totalPop
+
+        var q = Math.sqrt(parseFloat(percentRecessive))
+        q = q.toPrecision(2)
+        var p = 1 - q
+        p = p.toPrecision(2)
+
+        // calculate genotypic frequencies
+
+        var A = p
+        var a = q
+
+        var AA = A * A
+        AA = AA.toPrecision(2)
+        var Aa = (A * a) * 2
+        Aa = Aa.toPrecision(2)
+        var aa = a * a
+        aa = aa.toPrecision(2)
+
+        $("#o6a").html(AA)
+        $("#o6b").html(Aa)
+        $("#o6c").html(aa)
+
+
+        var myString = ""
+        myString = `<p>Percent of the population that is recessive is: ${percentRecessive}  This is also the phenotype frequency which confusingly is also the genotypic frequency.</p>`
+        myString += `<p>Therefore, q<sup>2</sup> = ${percentRecessive}</p>`
+        myString += `<p>The sqrt of q<sup>2</sup> is: q</p>`
+        myString += `<p>The sqrt of ${percentRecessive} is: ${q}</p>`
+        myString += `<p>Therefore, q = ${q}</p><hr>`
+        myString += `<p>Hardy-Weinberg Formula: p + q = 1</p>`
+        myString += `<p>Solve for p:</p>`
+        myString += `<p>p + ${q} = 1</p>`
+        myString += `<p>p = ${p}</p>`
+        myString += `<p>${p} + ${q} = 1</p><hr>`
+        myString += `<p>Therefore, the frequency of the 'a' allele in in the population is q = ${q} and the frequency of the 'A' allele in the population is p = ${p}</p>`
+        $("#resultsForQ").html(myString)
+  
+
+        // results for genotypic frequencies
+        myString = `<p>Frequency of AA = p<sup>2</sup> = ${AA}</p>`
+        myString += `<p>Frequency of Aa = 2pq = ${Aa}</p>`
+        myString += `<p>Frequency of aa = q<sup>2</sup> = ${aa}</p>`
+
+        $("#resultsForFrequencies").html(myString)
+    });
+
 
 
     $(document).ready(function () {
