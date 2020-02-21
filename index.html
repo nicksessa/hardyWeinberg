@@ -31,7 +31,7 @@
                 <hr class="mb-5">
                 <div class="row">
 
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-8 offset-md-2">
                         <span>p + q = 1</span>
                         <div>
                             <span>p<sup>2</sup> + 2pq + q<sup>2</sup> = 1</span>
@@ -87,7 +87,7 @@
                         <!-- /form find q -->
 
                     </div>
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-8 offset-md-2">
                         <span class="anchor" id="genotypicFrequencies"></span>
                         <hr class="mb-5">
 
@@ -102,7 +102,8 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>GenoType</th>
+                                                <th>Genotype</th>
+                                                <th>Phenotype</th>
                                                 <th>Formula</th>
                                                 <th>Result</th>
                                                 <th>Num Individuals</th>
@@ -111,18 +112,21 @@
                                         <tbody>
                                             <tr>
                                                 <td>AA</td>
+                                                <td>homozygous dominant</td>
                                                 <td>p<sup>2</sup></td>
                                                 <td id="AA_freq"></td>
                                                 <td id="AA_num"></td>
                                             </tr>
                                             <tr>
                                                 <td>Aa</td>
+                                                <td>heterozygous</td>
                                                 <td>2pq</td>
                                                 <td id="Aa_freq"></td>
                                                 <td id="Aa_num"></td>
                                             </tr>
                                             <tr>
                                                 <td>aa</td>
+                                                <td>homozygous recessive</td>
                                                 <td>q<sup>2</sup></td>
                                                 <td id="aa_freq"></td>
                                                 <td id="aa_num"></td>
