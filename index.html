@@ -45,7 +45,7 @@
                                 <h3 class="mb-0">Find q</h3>
                             </div>
                             <div class="card-body">
-                                <form class="form" role="form" autocomplete="off">
+                                <form class="form" role="form" autocomplete="off" id="mainForm" >
                                     <div class="form-group row">
                                         <label class="col-lg-9 col-form-label form-control-label">Total # of Individuals
                                             in a Population</label>
@@ -71,8 +71,12 @@
                                     </div>
 
                                     <hr>
-                                    <div class="row">
-                                        <h4>Results:</h4>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <p>
+                                                <h4>Results:</h4>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div id="resultsForQ"></div>
 
@@ -80,17 +84,17 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- /form card register -->
+                        <!-- /form find q -->
 
                     </div>
                     <div class="col-md-6 offset-md-3">
                         <span class="anchor" id="genotypicFrequencies"></span>
                         <hr class="mb-5">
 
-                        <!-- form card change password -->
+                        <!-- form card genotype frequencies -->
                         <div class="card card-outline-secondary">
                             <div class="card-header">
-                                <h3 class="mb-0">Genotypic Frequencies of AA Aa aa</h3>
+                                <h3 class="mb-0">Genotypic Frequencies</h3>
                             </div>
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off">
@@ -127,19 +131,10 @@
                                     </table>
 
 
-
-                                    <!-- <div class="row">
-                                        <div class="col-lg-3 offset-lg-9">
-                                            <p>Num of Individuals</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div id="resultsForFrequencies"></div>
-                                    </div> -->
                                 </form>
                             </div>
                         </div>
-                        <!-- /form card change password -->
+                        <!-- /form card genotypes -->
 
                     </div>
 
@@ -162,84 +157,95 @@
     <script>
 
         // validation example for Login form
-        $("#btnLogin").click(function (event) {
+        $("#submitBtn").click(function (event) {
 
-            var form = $("#loginForm");
+            var x = $("#populationSize").val()
+            var y = $("#recessiveAllele").val()
+
+            //console.log("x is: " + x)
+            //console.log("y is: " + y)
+
+            if (x == null || y == null || x == "" || y == "") {
+
+            } else {
+                run()
+            }
+
+
+
+            /* var form = $("#mainForm");
 
             if (form[0].checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
-            }
+            } else {
+                run()
+            } */
 
             // if validation passed form
             // would post to the server here
 
-            form.addClass('was-validated');
+            //form.addClass('was-validated');
+
+            
         });
 
+        function run() {
+            //$("#submitBtn").click(function (event) {
+                //alert("btn clicked!")
+                var totalPop = parseInt($("#populationSize").val())
+                var numRecessive = parseInt($("#recessiveAllele").val())
+                var percentRecessive = numRecessive / totalPop
 
-        $("#submitBtn").click(function (event) {
-            //alert("btn clicked!")
-            var totalPop = parseInt($("#populationSize").val())
-            var numRecessive = parseInt($("#recessiveAllele").val())
-            var percentRecessive = numRecessive / totalPop
+                var q = Math.sqrt(parseFloat(percentRecessive))
+                q = q.toPrecision(2)
+                var p = 1 - q
+                p = p.toPrecision(2)
 
-            var q = Math.sqrt(parseFloat(percentRecessive))
-            q = q.toPrecision(2)
-            var p = 1 - q
-            p = p.toPrecision(2)
+                // calculate genotypic frequencies
 
-            // calculate genotypic frequencies
+                var A = p
+                var a = q
 
-            var A = p
-            var a = q
+                var AA = A * A
+                AA = AA.toPrecision(2)
+                var Aa = (A * a) * 2
+                Aa = Aa.toPrecision(2)
+                var aa = a * a
+                aa = aa.toPrecision(2)
 
-            var AA = A * A
-            AA = AA.toPrecision(2)
-            var Aa = (A * a) * 2
-            Aa = Aa.toPrecision(2)
-            var aa = a * a
-            aa = aa.toPrecision(2)
-
-            // calculate the number of individuals for each genotype
-            var numAA = AA * totalPop
-            var numAa = Aa * totalPop
-            var numaa = aa * totalPop
-
-
-            var myString = ""
-            myString = `<p>Percent of the population that is recessive is: ${percentRecessive}  This is also the phenotype frequency which confusingly is also the genotypic frequency.</p>`
-            myString += `<p>Therefore, q<sup>2</sup> = ${percentRecessive}</p>`
-            myString += `<p>The sqrt of q<sup>2</sup> is: q</p>`
-            myString += `<p>The sqrt of ${percentRecessive} is: ${q}</p>`
-            myString += `<p>Therefore, q = ${q}</p><hr>`
-            myString += `<p>Hardy-Weinberg Formula: p + q = 1</p>`
-            myString += `<p>Solve for p:</p>`
-            myString += `<p>p + ${q} = 1</p>`
-            myString += `<p>p = ${p}</p>`
-            myString += `<p>${p} + ${q} = 1</p><hr>`
-            myString += `<p>Therefore, the frequency of the 'a' allele in in the population is q = ${q} and the frequency of the 'A' allele in the population is p = ${p}</p>`
-            $("#resultsForQ").html(myString)
+                // calculate the number of individuals for each genotype
+                var numAA = AA * totalPop
+                var numAa = Aa * totalPop
+                var numaa = aa * totalPop
 
 
-            // results for genotypic frequencies
-            //myString = `<p>Frequency of AA = p<sup>2</sup> = ${AA}</p>`
-            //myString += `<p>Frequency of Aa = 2pq = ${Aa}</p>`
-            //myString += `<p>Frequency of aa = q<sup>2</sup> = ${aa}</p>`
+                var myString = ""
+                myString = `<p>Percent of the population that is recessive is: ${percentRecessive}  This is also the phenotype frequency which confusingly is also the genotypic frequency.</p>`
+                myString += `<p>Therefore, q<sup>2</sup> = ${percentRecessive}</p>`
+                myString += `<p>The sqrt of q<sup>2</sup> is: q</p>`
+                myString += `<p>The sqrt of ${percentRecessive} is: ${q}</p>`
+                myString += `<p>Therefore, q = ${q}</p><hr>`
+                myString += `<p>Hardy-Weinberg Formula: p + q = 1</p>`
+                myString += `<p>Solve for p:</p>`
+                myString += `<p>p + ${q} = 1</p>`
+                myString += `<p>p = ${p}</p>`
+                myString += `<p>${p} + ${q} = 1</p><hr>`
+                myString += `<p>Therefore, the frequency of the 'a' allele in in the population is q = ${q} and the frequency of the 'A' allele in the population is p = ${p}</p>`
+                $("#resultsForQ").html(myString)
 
-            //$("#resultsForFrequencies").html(myString)
 
-            $("#AA_freq").html(AA)
-            $("#AA_num").html(numAA)
+                $("#AA_freq").html(AA)
+                $("#AA_num").html(numAA)
 
-            $("#Aa_freq").html(Aa)
-            $("#Aa_num").html(numAa)
+                $("#Aa_freq").html(Aa)
+                $("#Aa_num").html(numAa)
 
-            $("#aa_freq").html(aa)
-            $("#aa_num").html(numaa)
+                $("#aa_freq").html(aa)
+                $("#aa_num").html(numaa)
 
-        });
-
+            //});
+        }
 
 
     </script>
