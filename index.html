@@ -162,7 +162,8 @@
         $(document).ready(function () {
             // validation example for Login form
             $("#submitBtn").click(function (event) {
-
+                event.preventDefault();
+                
                 var x = $("#populationSize").val()
                 var y = $("#recessiveAllele").val()
 
