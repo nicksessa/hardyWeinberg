@@ -45,7 +45,7 @@
                                 <h3 class="mb-0">Find q</h3>
                             </div>
                             <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" id="mainForm" >
+                                <form class="form" role="form" autocomplete="off" id="mainForm">
                                     <div class="form-group row">
                                         <label class="col-lg-9 col-form-label form-control-label">Total # of Individuals
                                             in a Population</label>
@@ -159,43 +159,43 @@
     </div>
     <!--/container-->
     <script>
+        $(document).ready(function () {
+            // validation example for Login form
+            $("#submitBtn").click(function (event) {
 
-        // validation example for Login form
-        $("#submitBtn").click(function (event) {
+                var x = $("#populationSize").val()
+                var y = $("#recessiveAllele").val()
 
-            var x = $("#populationSize").val()
-            var y = $("#recessiveAllele").val()
+                //console.log("x is: " + x)
+                //console.log("y is: " + y)
 
-            //console.log("x is: " + x)
-            //console.log("y is: " + y)
+                if (x == null || y == null || x == "" || y == "") {
 
-            if (x == null || y == null || x == "" || y == "") {
-
-            } else {
-                run()
-            }
+                } else {
+                    run()
+                }
 
 
 
-            /* var form = $("#mainForm");
+                /* var form = $("#mainForm");
+    
+                if (form[0].checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    run()
+                } */
 
-            if (form[0].checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            } else {
-                run()
-            } */
+                // if validation passed form
+                // would post to the server here
 
-            // if validation passed form
-            // would post to the server here
+                //form.addClass('was-validated');
 
-            //form.addClass('was-validated');
 
-            
-        });
+            });
 
-        function run() {
-            //$("#submitBtn").click(function (event) {
+            function run() {
+                //$("#submitBtn").click(function (event) {
                 //alert("btn clicked!")
                 var totalPop = parseInt($("#populationSize").val())
                 var numRecessive = parseInt($("#recessiveAllele").val())
@@ -248,9 +248,9 @@
                 $("#aa_freq").html(aa)
                 $("#aa_num").html(numaa)
 
-            //});
-        }
-
+                //});
+            }
+        })
 
     </script>
 </body>
