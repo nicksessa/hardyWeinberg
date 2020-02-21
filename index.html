@@ -2,20 +2,20 @@
 <html>
 
 <head>
-  <title>Hardy-Weinberg Equation</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Hardy-Weinberg Equation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <!-- Import Custom Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM Fell English SC">
+    <!-- Import Custom Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM Fell English SC">
 
-  <style>
-   
-  </style>
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                 <h2 class="text-center mb-5">Hardy-Weinberg Equation</h2>
                 <ul class="nav nav-fill">
                     <a class="nav-item" href="#findq">Find q</a>
-<!--                     <a class="nav-item" href="#formChangePassword">Password</a>
+                    <!--                     <a class="nav-item" href="#formChangePassword">Password</a>
                     <a class="nav-item" href="#formContact">Contact</a> -->
                 </ul>
                 <hr class="mb-5">
@@ -38,7 +38,7 @@
                         </div>
                         <span class="anchor" id="findq"></span>
                         <hr class="mb-5">
-    
+
                         <!-- form card register -->
                         <div class="card card-outline-secondary">
                             <div class="card-header">
@@ -47,26 +47,33 @@
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off">
                                     <div class="form-group row">
-                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Individuals in a Population</label>
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Individuals
+                                            in a Population</label>
                                         <div class="col-lg-3">
-                                            <input id="populationSize" class="form-control" type="number" value="100" required="">
+                                            <input id="populationSize" class="form-control" type="number" value="100"
+                                                required="">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-9 col-form-label form-control-label"># of Individuals with recessive Allele</label>
+                                        <label class="col-lg-9 col-form-label form-control-label"># of Individuals with
+                                            recessive Allele</label>
                                         <div class="col-lg-3">
-                                            <input id="recessiveAllele" class="form-control" type="number" value="20" required="">
+                                            <input id="recessiveAllele" class="form-control" type="number" value="20"
+                                                required="">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <div class="col-lg-3 offset-lg-9">
-                                            <button id="submitBtn" type="submit" class="btn btn-success btn-lg float-right">Submit</button>
+                                            <button id="submitBtn" type="submit"
+                                                class="btn btn-success btn-lg float-right">Submit</button>
                                         </div>
                                     </div>
 
                                     <hr>
-                                    <div class="row"><h4>Results:</h4></div>
+                                    <div class="row">
+                                        <h4>Results:</h4>
+                                    </div>
                                     <div id="resultsForQ"></div>
 
 
@@ -74,12 +81,12 @@
                             </div>
                         </div>
                         <!-- /form card register -->
-    
+
                     </div>
                     <div class="col-md-6 offset-md-3">
                         <span class="anchor" id="genotypicFrequencies"></span>
                         <hr class="mb-5">
-    
+
                         <!-- form card change password -->
                         <div class="card card-outline-secondary">
                             <div class="card-header">
@@ -87,103 +94,155 @@
                             </div>
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off">
-                                    <div id="resultsForFrequencies"></div>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>GenoType</th>
+                                                <th>Formula</th>
+                                                <th>Result</th>
+                                                <th>Num Individuals</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>AA</td>
+                                                <td>p<sup>2</sup></td>
+                                                <td id="AA_freq"></td>
+                                                <td id="AA_num"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aa</td>
+                                                <td>2pq</td>
+                                                <td id="Aa_freq"></td>
+                                                <td id="Aa_num"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>aa</td>
+                                                <td>q<sup>2</sup></td>
+                                                <td id="aa_freq"></td>
+                                                <td id="aa_num"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+
+                                    <!-- <div class="row">
+                                        <div class="col-lg-3 offset-lg-9">
+                                            <p>Num of Individuals</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div id="resultsForFrequencies"></div>
+                                    </div> -->
                                 </form>
                             </div>
                         </div>
                         <!-- /form card change password -->
-    
+
                     </div>
-                    
+
                 </div>
                 <!--/row-->
-    
-            <br><br><br><br>
-    
+
+                <br><br><br><br>
+
             </div>
             <!--/col-->
         </div>
         <!--/row-->
         <hr>
         <p class="text-center">The End.<br>
-            <a class="small text-info d-inline-block" href="https://www.codeply.com/bootstrap-4-examples">More Bootstrap 4 Examples</a>
+            <!-- <a class="small text-info d-inline-block" href="https://www.codeply.com/bootstrap-4-examples">More Bootstrap 4 Examples</a> -->
         </p>
-        
+
     </div>
     <!--/container-->
-  <script>
+    <script>
 
-// validation example for Login form
- $("#btnLogin").click(function(event) {
-    
-    var form = $("#loginForm");
-    
-    if (form[0].checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    
-    // if validation passed form
-    // would post to the server here
-    
-    form.addClass('was-validated');
-}); 
+        // validation example for Login form
+        $("#btnLogin").click(function (event) {
 
+            var form = $("#loginForm");
 
-    $("#submitBtn").click(function(event) {
-        //alert("btn clicked!")
-        var totalPop = parseInt($("#populationSize").val())
-        var numRecessive = parseInt($("#recessiveAllele").val())
-        var percentRecessive = numRecessive / totalPop
+            if (form[0].checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
 
-        var q = Math.sqrt(parseFloat(percentRecessive))
-        q = q.toPrecision(2)
-        var p = 1 - q
-        p = p.toPrecision(2)
+            // if validation passed form
+            // would post to the server here
 
-        // calculate genotypic frequencies
-
-        var A = p
-        var a = q
-
-        var AA = A * A
-        AA = AA.toPrecision(2)
-        var Aa = (A * a) * 2
-        Aa = Aa.toPrecision(2)
-        var aa = a * a
-        aa = aa.toPrecision(2)
-
-        $("#o6a").html(AA)
-        $("#o6b").html(Aa)
-        $("#o6c").html(aa)
+            form.addClass('was-validated');
+        });
 
 
-        var myString = ""
-        myString = `<p>Percent of the population that is recessive is: ${percentRecessive}  This is also the phenotype frequency which confusingly is also the genotypic frequency.</p>`
-        myString += `<p>Therefore, q<sup>2</sup> = ${percentRecessive}</p>`
-        myString += `<p>The sqrt of q<sup>2</sup> is: q</p>`
-        myString += `<p>The sqrt of ${percentRecessive} is: ${q}</p>`
-        myString += `<p>Therefore, q = ${q}</p><hr>`
-        myString += `<p>Hardy-Weinberg Formula: p + q = 1</p>`
-        myString += `<p>Solve for p:</p>`
-        myString += `<p>p + ${q} = 1</p>`
-        myString += `<p>p = ${p}</p>`
-        myString += `<p>${p} + ${q} = 1</p><hr>`
-        myString += `<p>Therefore, the frequency of the 'a' allele in in the population is q = ${q} and the frequency of the 'A' allele in the population is p = ${p}</p>`
-        $("#resultsForQ").html(myString)
-  
+        $("#submitBtn").click(function (event) {
+            //alert("btn clicked!")
+            var totalPop = parseInt($("#populationSize").val())
+            var numRecessive = parseInt($("#recessiveAllele").val())
+            var percentRecessive = numRecessive / totalPop
 
-        // results for genotypic frequencies
-        myString = `<p>Frequency of AA = p<sup>2</sup> = ${AA}</p>`
-        myString += `<p>Frequency of Aa = 2pq = ${Aa}</p>`
-        myString += `<p>Frequency of aa = q<sup>2</sup> = ${aa}</p>`
+            var q = Math.sqrt(parseFloat(percentRecessive))
+            q = q.toPrecision(2)
+            var p = 1 - q
+            p = p.toPrecision(2)
 
-        $("#resultsForFrequencies").html(myString)
-    });
+            // calculate genotypic frequencies
+
+            var A = p
+            var a = q
+
+            var AA = A * A
+            AA = AA.toPrecision(2)
+            var Aa = (A * a) * 2
+            Aa = Aa.toPrecision(2)
+            var aa = a * a
+            aa = aa.toPrecision(2)
+
+            // calculate the number of individuals for each genotype
+            var numAA = AA * totalPop
+            var numAa = Aa * totalPop
+            var numaa = aa * totalPop
+
+
+            var myString = ""
+            myString = `<p>Percent of the population that is recessive is: ${percentRecessive}  This is also the phenotype frequency which confusingly is also the genotypic frequency.</p>`
+            myString += `<p>Therefore, q<sup>2</sup> = ${percentRecessive}</p>`
+            myString += `<p>The sqrt of q<sup>2</sup> is: q</p>`
+            myString += `<p>The sqrt of ${percentRecessive} is: ${q}</p>`
+            myString += `<p>Therefore, q = ${q}</p><hr>`
+            myString += `<p>Hardy-Weinberg Formula: p + q = 1</p>`
+            myString += `<p>Solve for p:</p>`
+            myString += `<p>p + ${q} = 1</p>`
+            myString += `<p>p = ${p}</p>`
+            myString += `<p>${p} + ${q} = 1</p><hr>`
+            myString += `<p>Therefore, the frequency of the 'a' allele in in the population is q = ${q} and the frequency of the 'A' allele in the population is p = ${p}</p>`
+            $("#resultsForQ").html(myString)
+
+
+            // results for genotypic frequencies
+            //myString = `<p>Frequency of AA = p<sup>2</sup> = ${AA}</p>`
+            //myString += `<p>Frequency of Aa = 2pq = ${Aa}</p>`
+            //myString += `<p>Frequency of aa = q<sup>2</sup> = ${aa}</p>`
+
+            //$("#resultsForFrequencies").html(myString)
+
+            $("#AA_freq").html(AA)
+            $("#AA_num").html(numAA)
+
+            $("#Aa_freq").html(Aa)
+            $("#Aa_num").html(numAa)
+
+            $("#aa_freq").html(aa)
+            $("#aa_num").html(numaa)
+
+        });
 
 
 
-  </script>
+    </script>
 </body>
 
 </html>
