@@ -25,6 +25,9 @@
                 <h2 class="text-center mb-5">Hardy-Weinberg Equation</h2>
                 <ul class="nav nav-fill">
                     <a class="nav-item" href="#findq">Find q</a>
+                    <a class="nav-item" href="#genotypicFrequencies">Genotype Frequencies</a>
+                    <a class="nav-item" href="#samplingWithReplacement">Swimming in the Gene Pool</a>
+                    <a class="nav-item" href="#naturalSelection">Natural Selection</a>
                     <!--                     <a class="nav-item" href="#formChangePassword">Password</a>
                     <a class="nav-item" href="#formContact">Contact</a> -->
                 </ul>
@@ -65,7 +68,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-lg-3 offset-lg-9">
-                                            <button id="submitBtn" 
+                                            <button id="submitBtn"
                                                 class="btn btn-success btn-lg float-right">Submit</button>
                                         </div>
                                     </div>
@@ -139,8 +142,295 @@
                             </div>
                         </div>
                         <!-- /form card genotypes -->
+                    </div>
+
+                    <div class="col-md-8 offset-md-2">
+                        <span class="anchor" id="samplingWithReplacement"></span>
+                        <hr class="mb-5">
+
+                        <!-- form card Sampling with Replacement -->
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Sampling with Replacement</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off">
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Dominant
+                                            Alleles</label>
+                                        <div class="col-lg-3">
+                                            <input id="brownAllele" class="form-control" type="number" value="50"
+                                                required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Recessive
+                                            Alleles</label>
+                                        <div class="col-lg-3">
+                                            <input id="whiteAllele" class="form-control" type="number" value="50"
+                                                required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Number of
+                                            Samples</label>
+                                        <div class="col-lg-3">
+                                            <input id="sampleSize" class="form-control" type="number" value="50"
+                                                required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-3 offset-lg-9">
+                                            <button id="runTestBtn" class="btn btn-success btn-lg float-right">Run
+                                                Test</button>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <p>
+                                                <h4>Results:</h4>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Genotype</th>
+                                                <th>Phenotype</th>
+                                                <th>Number</th>
+                                                <th>Genotypic Frequency</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>BB</td>
+                                                <td>homozygous dominant</td>
+                                                <td id="BB_num"></td>
+                                                <td id="BB_freq"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bb</td>
+                                                <td>heterozygous</td>
+                                                <td id="Bb_num"></td>
+                                                <td id="Bb_freq"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>bb</td>
+                                                <td>homozygous recessive</td>
+                                                <td id="bb_num"></td>
+                                                <td id="bb_freq"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h6>Total Individuals: <span id="totalIndividuals"></span></h6>
+                                    <h6>Genotype Frequency is: <span id="genoTypeFreq"></span></h6>
+                                    <br>
+                                    <hr>
+                                    <br>
+
+                                    <h4>Breakdown of Alleles</h4>
+                                    <br>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Number of B Alleles</th>
+                                                <th>Number of b Alleles</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="numBrown"></td>
+                                                <td id="numWhite"></td>
+                                                <td id="totalBoth"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Frequency of B (p) Alleles</th>
+                                                <th>Frequency of b (q) Alleles</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="freqBrown"></td>
+                                                <td id="freqWhite"></td>
+                                                <td id="totalFreqBoth"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /form sample with replacement -->
 
                     </div>
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-8 offset-md-2">
+                        <span class="anchor" id="naturalSelection"></span>
+                        <hr class="mb-5">
+
+                        <!-- form card Natural Selection -->
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Natural Selection</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off">
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Dominant
+                                            Alleles (Brown)</label>
+                                        <div class="col-lg-3">
+                                            <input id="brownAllele2" class="form-control" type="number" value="50"
+                                                required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-9 col-form-label form-control-label">Total # of Recessive
+                                            Alleles (White)</label>
+                                        <div class="col-lg-3">
+                                            <input id="whiteAllele2" class="form-control" type="number" value="50"
+                                                required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-lg-3 offset-lg-9">
+                                            <button id="runTestBtn2" class="btn btn-success btn-lg float-right">Run
+                                                Test</button>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <p>
+                                                <h4>Genotypic Number</h4>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>BB</th>
+                                                <th>Bb</th>
+                                                <th>Deaths (bb)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="BB_num2"></td>
+                                                <td id="Bb_num2"></td>
+                                                <td id="bb_num2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <hr>
+                                    <br>
+
+
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <p>
+                                                <h4>Final Genotypic Frequency</h4>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>p<sup>2</sup></th>
+                                                <th>2pq</th>
+                                                <th>q<sup>2</sup></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="final_p"></td>
+                                                <td id="final_2pq"></td>
+                                                <td id="final_q">0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <hr>
+                                    <br>
+
+
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <p>
+                                                <h4>Final and New Allelic Numbers</h4>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Final B</th>
+                                                <th>Final b</th>
+                                                <th>New (Starting) B</th>
+                                                <th>New (Starting) b</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="final_B"></td>
+                                                <td id="final_b"></td>
+                                                <td id="new_B"></td>
+                                                <td id="new_b"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <hr>
+                                    <br>
+
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /form natural selection -->
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
                 <!--/row-->
@@ -163,7 +453,7 @@
             // validation example for Login form
             $("#submitBtn").click(function (event) {
                 event.preventDefault();
-                
+
                 var x = $("#populationSize").val()
                 var y = $("#recessiveAllele").val()
 
@@ -194,6 +484,35 @@
 
 
             });
+
+            $("#runTestBtn").click(function (event) {
+                event.preventDefault();
+
+                var x = $("#brownAllele").val()
+                var y = $("#whiteAllele").val()
+                var z = $("#sampleSize").val()
+
+                if (x == "" || y == "" || z == "") {
+
+                } else {
+                    runTest()
+                }
+            })
+
+            // Natural Selection
+            $("#runTestBtn2").click(function (event) {
+                event.preventDefault();
+
+                var x = $("#brownAllele2").val()
+                var y = $("#whiteAllele2").val()
+                
+
+                if (x == "" || y == "") {
+
+                } else {
+                    runTest2()
+                }
+            })
 
             function run() {
                 //$("#submitBtn").click(function (event) {
@@ -251,6 +570,253 @@
 
                 //});
             }
+
+            // Sampling with Replacement
+            function runTest() {
+
+                var brownA = $("#brownAllele").val()
+                var whiteA = $("#whiteAllele").val()
+                var sampleSize = $("#sampleSize").val()
+
+                // Draw two beans from the gene pool at the same time!
+                // This is important!  If you draw one first, then draw another one after, the odds change!
+
+                var firstDraw = Math.floor(Math.random() * 2)
+                var secondDraw = Math.floor(Math.random() * 2)
+
+                console.log("first draw: " + firstDraw)
+                console.log("second draw: " + secondDraw)
+
+                var numBB = 0
+                var numBb = 0
+                var numbb = 0
+                var totalIndividuals = 0
+
+                var BB_freq = 0
+                var Bb_freq = 0
+                var bb_freq = 0
+                var genoTypeFreqTotal = 0
+
+                var numBrown = 0
+                var numWhite = 0
+                var totalBoth = 0
+
+                var freqBrown = 0
+                var freqWhite = 0
+                var totalFreqBoth = 0
+
+                for (i = 0; i < sampleSize; i++) {
+                    var allele1 = ""
+                    var allele2 = ""
+
+                    firstDraw = Math.floor(Math.random() * 2)
+                    secondDraw = Math.floor(Math.random() * 2)
+
+                    if (firstDraw == 0) {
+                        allele1 = "brown"
+                    } else {
+                        allele1 = "white"
+                    }
+
+                    if (secondDraw == 0) {
+                        allele2 = "brown"
+                    } else {
+                        allele2 = "white"
+                    }
+
+                    if (allele1 == "brown" && allele2 == "brown") numBB++
+                    if (allele1 == "white" && allele2 == "white") numbb++
+                    if (allele1 == "brown" && allele2 == "white") numBb++
+                    if (allele1 == "white" && allele2 == "brown") numBb++
+                }
+
+                // genotypic freq:
+                BB_freq = numBB / sampleSize
+                Bb_freq = numBb / sampleSize
+                bb_freq = numbb / sampleSize
+
+                genoTypeFreqTotal = BB_freq + Bb_freq + bb_freq
+
+                // ouptupt the results
+                $("#BB_num").html(numBB)
+                $("#Bb_num").html(numBb)
+                $("#bb_num").html(numbb)
+
+                $("#BB_freq").html(BB_freq)
+                $("#Bb_freq").html(Bb_freq)
+                $("#bb_freq").html(bb_freq)
+
+                totalIndividuals = numBB + numBb + numbb
+                $("#totalIndividuals").html(totalIndividuals)
+
+                var myString = ""
+                myString = `(${BB_freq} + ${Bb_freq} + ${bb_freq}) = ${genoTypeFreqTotal}`
+
+                $("#genoTypeFreq").html(myString)
+
+                numBrown = (numBB * 2) + numBb
+                numWhite = (numbb * 2) + numBb
+                totalBoth = numBrown + numWhite
+
+                freqBrown = numBrown / totalBoth
+                freqWhite = numWhite / totalBoth
+                totalFreqBoth = freqBrown + freqWhite
+
+                $("#numBrown").html(numBrown)
+                $("#numWhite").html(numWhite)
+                $("#totalBoth").html(totalBoth)
+
+                $("#freqBrown").html(freqBrown)
+                $("#freqWhite").html(freqWhite)
+                $("#totalFreqBoth").html(totalFreqBoth)
+
+            }
+
+
+            function shuffle(array) {
+                var currentIndex = array.length, temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+
+                return array;
+            }
+
+
+            function runTest2() {
+
+                var brownAle = $("#brownAllele2").val()
+                var whiteAle = $("#whiteAllele2").val()
+                var totalAle = parseInt(brownAle) + parseInt(whiteAle)
+                var population = (parseInt(brownAle) + parseInt(whiteAle)) / 2
+
+                // Draw two beans from the gene pool at the same time!
+                // This is important!  If you draw one first, then draw another one after, the odds change!
+
+                console.log("total ale: " + totalAle)
+
+                var brownCounter = 0
+                var whiteCounter = 0
+
+                var arr = []
+                // add values to the array
+                for (i = 0; i < totalAle; i++) {
+                    if (i < brownAle) {
+                        arr[i] = 0
+                        brownCounter++
+                    } else {
+                        arr[i] = 1
+                        whiteCounter++
+                    }
+                    
+                }
+                console.log("Brown Count: " + brownCounter)
+                console.log("White Count: " + whiteCounter)
+                // shuffle the array
+                arr = shuffle(arr);
+                console.log(arr);
+
+                // now loop through the array and pull out pairs.
+
+                var numBB = 0
+                var numBb = 0
+                var numbb = 0
+                var totalIndividuals = 0
+
+                for (i=0; i<arr.length; i++) {
+                    var ale1 = ""
+                    var ale2 = ""
+                    if (arr[i] == 0) ale1 = "brown"
+                    if (arr[i] == 1) ale1 = "white"
+                    //console.log("first ale: " + arr[i] + " -> " + ale1)
+
+                    i++
+                    if (arr[i] == 0) ale2 = "brown"
+                    if (arr[i] == 1) ale2 = "white"
+                    //console.log("second ale: " + arr[i] + " -> " + ale2)
+
+                    if (ale1 == "brown" && ale2 == "brown") numBB++
+                    if (ale1 == "white" && ale2 == "white") numbb++
+                    if (ale1 == "brown" && ale2 == "white") numBb++
+                    if (ale1 == "white" && ale2 == "brown") numBb++
+
+                }
+
+                var BB_freq = 0
+                var Bb_freq = 0
+                var bb_freq = 0
+                var genoTypeFreqTotal = 0
+
+                var numBrown = 0
+                var numWhite = 0
+                var totalBoth = 0
+
+                var freqBrown = 0
+                var freqWhite = 0
+                var totalFreqBoth = 0
+
+
+                // genotypic freq:
+                BB_freq = numBB / population
+                Bb_freq = numBb / population
+                bb_freq = numbb / population
+
+                genoTypeFreqTotal = BB_freq + Bb_freq + bb_freq
+
+                // ouptupt the results
+                $("#BB_num2").html(numBB)
+                $("#Bb_num2").html(numBb)
+                $("#bb_num2").html(numbb)
+
+                // calculate final geno freq
+                var final_p = numBB / (numBB + numBb)
+                final_p = final_p.toPrecision(2)
+                var final_2pq = numBb / (numBB + numBb)
+                final_2pq = final_2pq.toPrecision(2)
+                // final_q is 0 because they died...
+
+                $("#final_p").html(final_p)
+                $("#final_2pq").html(final_2pq)
+
+                // calc Ale - man I wish I had a drink
+                var final_B = (numBB * 2) + numBb
+                var final_b = numBb
+
+                $("#final_B").html(final_B)
+                $("#final_b").html(final_b)
+
+                var new_p = final_B / (final_B + final_b)
+                new_p = new_p.toPrecision(2)
+                var new_q = final_b / (final_B + final_b)
+                new_q = new_q.toPrecision(2)
+
+                var new_B = new_p * 100
+                var new_b = new_q * 100
+                $("#new_B").html(new_B)
+                $("#new_b").html(new_b)
+
+                var myString = ""
+                myString = `(${BB_freq} + ${Bb_freq} + ${bb_freq}) = ${genoTypeFreqTotal}`
+
+                //$("#genoTypeFreq2").html(myString)
+
+
+
+            }
+
+
+
+
         })
 
     </script>
